@@ -1,0 +1,36 @@
+services:
+    postgres:
+        image: postgres:15
+        container_name: postgres-laravel-dashboard
+        environment:
+            POSTGRES_PASSWORD: admin
+            POSTGRES_USER: admin
+            POSTGRES_DB: isradev_database
+        ports:
+            - "5433:5432"
+            
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        networks:
+            - laravel_net_dashboard
+    pgadmin:
+        image: dpage/pgadmin4:9.17
+        container_name: pgadmin-laravel-dashboard
+        environment:
+            PGADMIN_DEFAULT_EMAIL: admin@gmail.com
+            PGADMIN_DEFAULT_PASSWORD: admin123
+        ports:
+            - "5050:80"
+        depends_on:
+            - postgres
+        volumes:
+            - pgadmin_data:/var/lib/pgadmin
+        networks:
+            - laravel_net_dashboard
+volumes:
+    postgres_data:
+    pgadmin_data:
+networks:
+    laravel_net_dashboard:
+        driver: bridge
+        
