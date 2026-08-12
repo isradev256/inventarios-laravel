@@ -41,6 +41,14 @@
                     </a>
                 </li>
 
+                <li class="menu-title"> operaciones</li>
+                 <li>
+                    <a href=" {{ route ('lista_categoria') }}" class="waves-effect">
+                        <i class="uil uil-shop"></i>
+                        <span>Categorias</span>
+                    </a>
+                </li>
+
 
 
                 <li class="menu-title">@lang('translation.Apps')</li>
@@ -51,6 +59,7 @@
                         <span>@lang('translation.Calendar')</span>
                     </a>
                 </li>
+
 
                 <li>
                     <a href="chat" class=" waves-effect">

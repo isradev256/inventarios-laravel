@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,20 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'root']);
+// cada ruta tiene metodos http get, post, put,  delete
 
+
+// Route::get('/categorias', function(){
+//     return 'hola categoria';
+// })->name('lista_categoria');
+
+/**metodos de categorias */
+Route::get('/categorias',[CategoriaController::class,'index'])->name('lista_categoria');
+Route::post('categoria/crear',[CategoriaController::class, 'store'])->name('crear_categoria');
+
+Route::delete('/categoria/eliminar/{id}',[CategoriaController::class,'destroy'])->name('eliminar_categoria');
+
+Route::put('/categoria/editar/{id}',[CategoriaController::class, 'update']);
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index']);
 //Language Translation
 
