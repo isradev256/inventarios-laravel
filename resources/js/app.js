@@ -204,6 +204,7 @@ File: Main Js File
                 // changeDirection(alreadyVisited);
             }
         }
+
     }
 
     function updateRadio(radioId) {
@@ -258,7 +259,7 @@ File: Main Js File
         $("input[name='layout']").on('change', function () {
             window.location.href = ($(this).val() == "vertical") ? "index": "layouts-horizontal";
         });
-        
+
         // on layout mode change
         $("input[name='layout-mode']").on('change', function () {
             if($(this).val() == "light") {
@@ -290,6 +291,7 @@ File: Main Js File
                 document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
             }
         });
+
     }
 
     function init() {
@@ -306,6 +308,8 @@ File: Main Js File
         initPreloader();
         layoutSetting();
         Waves.init();
+
+
     }
 
     init();

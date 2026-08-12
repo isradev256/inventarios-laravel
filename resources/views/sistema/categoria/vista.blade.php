@@ -57,20 +57,24 @@
                                     <td>{{ $categoria->nombre }}</td>
                                     <td>{{ $categoria->descripcion }}</td>
                                     <td>
-                                        <form action="{{ route('eliminar_categoria', $categoria->id) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-outline-danger btn-sm" type="submit">
-                                                Eliminar
-                                            </button>
+                                        <div class="d-flex gap-2">
 
-                                        </form>
-                                        <button class="btn btn-outline-primary btn-sm btn-editar-categoria"
-                                            data-bs-toggle="modal" data-bs-target="#modalEditar"
-                                            data-id="{{ $categoria->id }}" data-nombre="{{ $categoria->nombre }}"
-                                            data-descripcion="{{ $categoria->descripcion }}">
-                                            editar
-                                        </button>
+                                            <button class="btn btn-outline-primary btn-sm btn-editar-categoria"
+                                                data-bs-toggle="modal" data-bs-target="#modalEditar"
+                                                data-id="{{ $categoria->id }}" data-nombre="{{ $categoria->nombre }}"
+                                                data-descripcion="{{ $categoria->descripcion }}">
+                                                editar
+                                            </button>
+                                             <form action="{{ route('eliminar_categoria', $categoria->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-outline-danger btn-sm" type="submit">
+                                                    Eliminar
+                                                </button>
+
+                                            </form>
+                                        </div>
+
 
                                     </td>
                                 </tr>
@@ -225,6 +229,27 @@
             });
 
         });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                title: '{{ session('success') }}',
+                icon: "success",
+                showConfirmButton: false,
+                timer: 3000,
+
+            });
+        @else(session('error'))
+              Swal.fire({
+                title: 'Ups Ocurrio un Error!',
+                text: '{{ session('error') }}',
+                icon: "error",
+                showConfirmButton: true,
+
+            });
+        @endif
     </script>
 @endsection
 @section('script')

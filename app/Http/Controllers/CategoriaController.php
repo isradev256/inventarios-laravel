@@ -6,7 +6,6 @@ use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-
 class CategoriaController extends Controller
 {
     public function index(){
@@ -16,13 +15,15 @@ class CategoriaController extends Controller
 
 
         return view('sistema.categoria.vista',
+
         compact('categorias'));
 
     }
     public function store(Request $request){
         // dd($request -> all());
 
-        $request->validate([
+       try {
+         $request->validate([
             'nombre' => 'required|string|max:255|unique:categorias,nombre',
             'descripcion'=> 'required|string',
         ]);
@@ -32,8 +33,11 @@ class CategoriaController extends Controller
             'nombre' => $request->nombre,
             'descripcion' => $request -> descripcion,
         ]);
+        return redirect()->back()->with('success','creado con exito');
+       } catch (\Exception $e) {
+            return redirect()->back()->with('error','error '. $e->getMessage());
 
-        return redirect()->back();
+       }
 
     }
 
@@ -41,7 +45,7 @@ class CategoriaController extends Controller
         // dd($id);
         $categoria = Categoria::findOrFail($id);
         $categoria->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success','Eliminado con Exito');
 
 
     }
@@ -81,6 +85,6 @@ public function update(Request $request, $id)
     $categoria->save();
 
     // Volver a la página anterior
-    return redirect()->back();
+    return redirect()->back()->with('success','Actualizado con Exito');
 }
 }
