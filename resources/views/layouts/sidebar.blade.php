@@ -42,6 +42,12 @@
                 </li>
 
                 <li class="menu-title"> operaciones</li>
+                <li>
+                    <a href=" {{ route ('lista_libro') }}" class="waves-effect">
+                        <i class="uil uil-book-open"></i>
+                        <span>Libros</span>
+                    </a>
+                </li>
                  <li>
                     <a href=" {{ route ('lista_categoria') }}" class="waves-effect">
                         <i class="uil uil-shop"></i>

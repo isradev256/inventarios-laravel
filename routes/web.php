@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\LibroController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,13 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'root']);
 //     return 'hola categoria';
 // })->name('lista_categoria');
 
+/** metodos de libro */
+Route::get('/libros',[LibroController::class,'index'])->name('lista_libro');
+Route::post('libro/crear',[LibroController::class, 'store'])->name('crear_libro');
+
+Route::delete('/libro/eliminar/{id}',[LibroController::class,'destroy'])->name('eliminar_libro');
+
+Route::put('/libro/editar/{id}',[LibroController::class, 'update']);
 /**metodos de categorias */
 Route::get('/categorias',[CategoriaController::class,'index'])->name('lista_categoria');
 Route::post('categoria/crear',[CategoriaController::class, 'store'])->name('crear_categoria');
