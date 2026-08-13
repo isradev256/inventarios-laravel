@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutorController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\LibroController;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,11 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'root']);
 // Route::get('/categorias', function(){
 //     return 'hola categoria';
 // })->name('lista_categoria');
-
+//**metodo autores */
+Route::get('autores',[AutorController::class,'index'])->name('lista_autor');
+Route::post('autor/crear',[AutorController::class, 'store'])->name('crear_autor');
+Route::delete('/autor/eliminar/{id}',[AutorController::class,'destroy'])->name('eliminar_autor');
+Route::put('/autor/editar/{id}',[AutorController::class, 'update']);
 /** metodos de libro */
 Route::get('/libros',[LibroController::class,'index'])->name('lista_libro');
 Route::post('libro/crear',[LibroController::class, 'store'])->name('crear_libro');
