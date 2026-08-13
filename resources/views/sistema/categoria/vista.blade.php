@@ -16,7 +16,6 @@
         @endslot
     @endcomponent
 
-    <h1>hola isradev</h1>
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -241,7 +240,7 @@
                 timer: 3000,
 
             });
-        @else(session('error'))
+        @elseif(session('error'))
               Swal.fire({
                 title: 'Ups Ocurrio un Error!',
                 text: '{{ session('error') }}',
