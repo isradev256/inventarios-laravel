@@ -3,6 +3,7 @@
 use App\Http\Controllers\AutorController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\LibroController;
+use App\Http\Controllers\ServicioController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,9 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'root']);
 // Route::get('/categorias', function(){
 //     return 'hola categoria';
 // })->name('lista_categoria');
+//**metodo Servicio */
+
+Route::get('servivios',[ServicioController::class,'index'])->name('Lista_servicio');
 //**metodo autores */
 Route::get('autores',[AutorController::class,'index'])->name('lista_autor');
 Route::post('autor/crear',[AutorController::class, 'store'])->name('crear_autor');
@@ -46,7 +50,14 @@ Route::post('categoria/crear',[CategoriaController::class, 'store'])->name('crea
 Route::delete('/categoria/eliminar/{id}',[CategoriaController::class,'destroy'])->name('eliminar_categoria');
 
 Route::put('/categoria/editar/{id}',[CategoriaController::class, 'update']);
+
+//**Servicio */
+Route::post('servicio/crear', [ServicioController::class, 'crear_servicio'])->name('crear_servicio');
+Route::delete('servicio/eliminar/{id}',[ServicioController::class, 'destroy'])->name('eliminar_servicio');
+// Ruta para actualizar un servicio por su ID (usa PUT)
+Route::put('servicio/actualizar/{id}', [ServicioController::class, 'actualizar_servicio'])->name('actualizar_servicio');
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index']);
+
 //Language Translation
 
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);

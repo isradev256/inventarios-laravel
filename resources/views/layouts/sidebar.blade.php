@@ -54,6 +54,12 @@
                         <span>Categorias</span>
                     </a>
                 </li>
+                 <li>
+                    <a href=" {{ route ('Lista_servicio') }}" class="waves-effect">
+                        <i class="uil uil-briefcase-alt"></i>
+                        <span>Servicios</span>
+                    </a>
+                </li>
                 <li>
                     <a href=" {{ route ('lista_autor') }}" class="waves-effect">
                        <i class="uil uil-book-reader"></i>
