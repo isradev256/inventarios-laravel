@@ -271,7 +271,20 @@
                     // ==============================
                     // 3. CAMBIAR LA URL DEL FORMULARIO
                     // ==============================
-                    // Buscamos el formulario
+                    // utilizando el ID de libro
+                    //
+                    // Por ejemplo, si id = 5:
+                    // /libro/editar/5
+                    formulario.action = `/libro/editar/${id}`;
+
+
+                });
+
+
+            });
+
+        });
+    </script>  // Buscamos el formulario
                     const formulario = document.getElementById('formEditar');
                     // Cambiamos dinámicamente el atributo "action"
                     // utilizando el ID de libro
@@ -288,6 +301,7 @@
 
         });
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
